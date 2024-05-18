@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Spinner from './Spinner';
 import LoadingBar from 'react-top-loading-bar';
-import InfiniteScroll from 'react-infinite-scroll-component'
+// import InfiniteScroll from 'react-infinite-scroll-component'
 const NewItem = (props) => {
     const [article, setArticle] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -12,7 +12,7 @@ const NewItem = (props) => {
     const updatenews = async (page) => {
         console.log(10);
         setProgress(0);
-        let url = `https://newsapi.org/v2/everything?q=${props.type}&apiKey=e7b769dc8d564160a344dd06d6f37066&pageSize=6&page=${page}`;
+        let url = `https://newsapi.org/v2/everything?q=${props.type}&apiKey=${props.apikey}&pageSize=6&page=${page}`;
         setLoading(true);
         let data1 = await fetch(url);
         let parshed = await data1.json();
@@ -66,7 +66,7 @@ const NewItem = (props) => {
       <div className="row">
         
         {article && article.map((article, index) => (
-          <div className='col-sm-4 my-'style={{marginleft:'15%'}}>
+          <div className='col-sm-4 my-'style={{marginleft:'15%',marginBottom:'20px'}}>
             {/* <div>This is news NewItem {index + 1}</div> */}
             <div className="card" style={{ width: '18rem' }}>
               <img src={article.urlToImage?article.urlToImage:"https://th.bing.com/th?id=OIP.GPgOs_sd9nF8fsKDOJe9dQHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"} className="card-img-top" alt="..." />
